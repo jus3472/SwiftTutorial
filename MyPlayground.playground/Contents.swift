@@ -38,7 +38,7 @@ print(number.isMultiple(of: 3))
 let id = Int.random(in: 1...1000)
 
 // DECIMALS
-let decimal1 = 3.1 //if you create a number with a decimal point, Swift considered it a double even if the numbers after it are a 0
+let decimal1 = 3.1 //if you create a number with a decimal point, Swift considers it a double even if the numbers after it are a 0.
 let decimal2 = 3.0
 
 // BOOLEANS
@@ -55,7 +55,7 @@ let message = "I'm \(firstName) and I'm \(age) years old"
 print(message)
 
 // ARRAYS
-// each element in an array must be the same type
+// Each element in an array must be the same type.
 var colors = ["Red", "Green", "Blue"]
 let numbers = [4, 8, 15, 16]
 var readings = [0.1, 0.5, 0.8]
@@ -143,8 +143,8 @@ enum Weather {
 }
 let forecast = Weather.sun
 
-//switch statements require you to take into consideration all cases, using a default takes care of this as well.
-//indentation doesn't matter (like in all of swift), but this indentation is common practice.
+// Switch statements require you to take into consideration all cases, using a default takes care of this as well.
+// Indentation doesn't matter (like in all of swift), but this indentation is common practice.
 switch forecast {
 case .sun:
     print("A nice day.")
@@ -156,34 +156,34 @@ default:
 
 // TERNARY CONDITIONAL OPERATOR
 // A simple way to specifically write an if and else statement that returns a value.
-// thought-process: is age >= 18? if it is, return "Yes", else return "No".
+// Thought-process: is age >= 18? if it is, return "Yes", else return "No".
 let myAge = 18
 let canVote = age >= 18 ? "Yes" : "No"
 print(canVote)
 
 // LOOPS
 // C-Style for-loop is removed in Swift
-// iterates through every element in the "platforms" array.
+// Iterates through every element in the "platforms" array.
 let platforms = ["iOS", "macOS", "tvOS", "watchOS"]
 for os in platforms {
     print("Swift works on \(os)")   //could you have used "i" as the variable instead of "os".
 }
 
-// iterates through every key-value pair in the "ages" dictionary.
+// Iterates through every key-value pair in the "ages" dictionary.
 let ages = ["Alice": 30, "Bob": 25, "Charlie": 35]
 for (name, age) in ages {
     print("\(name) is \(age) years old")
 }
 
-// iterates through 1 to 4 inclusive (can also be used to just print something 4 times). Equivalent to C-Style: for (int i = 1; i <= 4; i++)
+// Iterates through 1 to 4 inclusive (can also be used to just print something 4 times). Equivalent to C-Style: for (int i = 1; i <= 4; i++)
 for i in 1...4 {
     print("5 * \(i) is \(5 * i)")
 }
-// iterates through 0 to 4 (not including 5).
+// Iterates through 0 to 4 (not including 5).
 for i in 0..<5 {
     print(i)
 }
-// iterates through 3 to 5 (you can have a different starting point)
+// Iterates through 3 to 5 (you can have a different starting point).
 for i in 3..<6 {
     print (i)
 }
@@ -210,7 +210,7 @@ while count > 0 {
 }
 print("Go!")
 
-//while loop that uses "continue" to instantly go on to the next iteration. There's also "break" which breaks out of the current loop.
+// While loop that uses "continue" to instantly go on to the next iteration. There's also "break" which breaks out of the current loop.
 let files = ["me.jpg", "work.txt", "sophie.jpg"]
 for file in files {
     if file.hasSuffix(".jpg") == false {
@@ -260,15 +260,15 @@ let (f1, _) = getUser()
 print("First name: \(f1)")
 
 // CUSTOMIZING PARAMETER LABELS
-// you can optionally not add the parameter name in the function call argument, but you must use a "_ " right before the parameter in the function definition.
+// You can optionally not add the parameter name in the function call argument, but you must use a "_ " right before the parameter in the function definition.
 func isUppercase(_ string: String) -> Bool {
     string == string.uppercased()
 }
 let string = "HELLO WORLD"
 let result1 = isUppercase(string)   //normally it would be isUppercase(string: string)
 
-// you can also add a second parameter name (internal name) after the original to be used in the function body.
-// here, "x" is the external parameter name and "number" is the internal parameter name.
+// You can also add a second parameter name (internal name) after the original to be used in the function body.
+// Here, "x" is the external parameter name and "number" is the internal parameter name.
 func printTimesTable(x number: Int) {
     for i in 1...3 {
         print("\(i) x \(number) is \(i * number)")
@@ -277,7 +277,7 @@ func printTimesTable(x number: Int) {
 printTimesTable(x: 5)
 
 // PROVIDING DEFAULT VALUES FOR PARAMETERS
-// you can assign a parameter (x) a default value (false), and if a function call is missing this argument, it will default to the default value.
+// You can assign a parameter (x) a default value (false), and if a function call is missing this argument, it will default to the default value.
 func greet(person: String, x: Bool = false) {
     if x {
         print("Welcome, \(person)")
@@ -323,16 +323,16 @@ do {
 }
 
 // CLOSURES
-// closures are a block of code that acts as a function but can be passed around and assigned to variables.
-// here, "sayHello1" is a constant assigned a closure, which is the {...} (including the code inside the brackets).
-// closures will have an "= {" to show you that it is a closure, different from functions and computed properties.
-// closures can be assigned to either a "let" or "var".
+// Closures are a block of code that acts as a function but can be passed around and assigned to variables.
+// Here, "sayHello1" is a constant assigned a closure, which is the {...} (including the code inside the brackets).
+// Closures will have an "= {" to show you that it is a closure, different from functions and computed properties.
+// Closures can be assigned to either a "let" or "var".
 let sayHello1 = {
     print("hello")
 }
 sayHello1()
 
-// if you want to add parameters to a closure, simply add it in the same way as an actual function like "(name: String) -> String" right after the first bracket. The "in" keyword separates the parameters and return type from the closure's body.
+// If you want to add parameters to a closure, simply add it in the same way as an actual function like "(name: String) -> String" right after the first bracket. The "in" keyword separates the parameters and return type from the closure's body.
 let sayHello2 = { (name: String) -> String in
     return "Hi, \(name)!"
 }
@@ -388,9 +388,9 @@ struct Album {
     }
 }
 var red = Album(title: "Red", artist: "Taylor Swift")
-print(red.title)        //object.property to retrieve a stored property of the object
-red.printSummary()      //object.method which calls a method of the object
-red.removeFromSale()    //call the mutating function to change isReleased to false
+print(red.title)        //'object.property' to retrieve a stored property of the object
+red.printSummary()      //'object.method' which calls a method of the object
+red.removeFromSale()    //call the mutating function to change 'isReleased' to false
 print(red.isReleased)   //output: false
 
 // COMPUTED PROPERTIES
@@ -468,7 +468,7 @@ struct Player {
     let name: String
     let number:Int
     
-    // btw, custom inits cannot return anything
+    //btw, custom inits cannot return anything
     init(name: String) {
         self.name = name
         number = Int.random(in: 1...99)
@@ -508,8 +508,8 @@ print(account.funds)
 // STATIC PROPERTIES AND METHODS
 // Static properties and methods are shared for all instances of the struct and can be accessed without creating an instance.
 // 'version' and 'settingsFile' are static, so they are shared for all instances. You can call it through: 'struct.staticProperty'.
-// additionally, calling a static property/method with an instance wouldn't work.
-// you can only change static fields if they use "var" instead of "let" like 'AppData.settingsFile = "config.json"'.
+// Additionally, calling a static property/method with an instance wouldn't work.
+// You can only change static fields if they use "var" instead of "let" like 'AppData.settingsFile = "config.json"'.
 struct AppData {
     static let version = "1.3 beta 2"
     static var settingsFile = "settings.json"
@@ -529,7 +529,7 @@ class Employee1 {
         print("I work \(hours) hours a day.")
     }
 }
-// The Developer class is a subclass/child class of the Employee1 class.
+// The 'Developer' class is a subclass/child class of the 'Employee1' class.
 // It has access to the parent class's stored properties and methods.
 // The "override" keyword overrides the parent function. This function will be called instead of the parent's now.
 class Developer: Employee1 {
@@ -594,7 +594,7 @@ class Site {
         print("Site \(id): I've been destroyed!")
     }
 }
-// the 'site' variable is a local variable in the loop and is destroyed at the end of each iteration.
+// The 'site' variable is a local variable in the loop and is destroyed at the end of each iteration.
 for i in 1...3 {
     let site = Site(id: i)
     print("Site \(site.id): I'm in control!")
@@ -622,10 +622,10 @@ protocol Vehicles {
     func estimateTime(distance: Int) -> Int
     func travel(distance: Int)
 }
-// note that "Cars: Vehicles" is the same type of syntax as stating that 'Cars' is a child class of 'Vehicles'.
+// Note that "Cars: Vehicles" is the same type of syntax as stating that 'Cars' is a child class of 'Vehicles'.
 struct Cars: Vehicles {
-    let name = "Car"                // can be `let` or `var` as it only needs to be accessible.
-    var currentPassengers = 1       // must be `var` to meet the `get set` requirement.
+    let name = "Car"                //can be `let` or `var` as it only needs to be accessible.
+    var currentPassengers = 1       //must be `var` to meet the `get set` requirement.
     
     func estimateTime(distance: Int) -> Int {
         distance/50
@@ -633,7 +633,7 @@ struct Cars: Vehicles {
     func travel(distance: Int) {
         print("I'm driving \(distance)km")
     }
-    func openSunroof() {    //you can also have other methods
+    func openSunroof() {    //you can also have other methods.
         print("It's a nice day!")
     }
 }
@@ -733,7 +733,7 @@ print(printSquare(number: nil))
 // NIL COALESCING
 // Use a "??" to provide a default value if the optional is nil.
 //'tvShows.randomElement()' returns an optional String, which is one of the elements, or nil if the array is empty.
-// if 'randomElement()' return nil, 'favorite' is assigned "None".
+// If 'randomElement()' returns nil, 'favorite' is assigned "None".
 let tvShows = ["Archer", "Babylon 5", "Ted Lasso"]
 let favorite = tvShows.randomElement() ?? "None"
 // 'Int(input) attempts to convert 'input' to an 'Int'.
