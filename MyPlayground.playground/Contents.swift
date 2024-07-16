@@ -401,7 +401,7 @@ print(red.isReleased)   //output: false
 // Called with 'object.computedProperty = ...' for the setter.
 // The dot notation is similar to retrieving a stored property, just now, you are retrieving a computed property, which is based on the stored properties.
 // The set block uses the reserved keyword "newValue" which is the right side of 'object.computedProperty = ...'.
-// Think of "area" as the computed property that returns a Double. Don't think of it as a variable that's of type Double, even though that's what it looks like.
+// Think of "area" as the computed property that returns a Double object. Don't think of it as a variable that's of type Double, even though that's what it looks like.
 // It uses "var" (never "let") to show that the computed value (the return value) can change depending on the stored properties.
 // The syntax is like this to be similar to stored properties. It is to emphasize that computed properties just return a computation based on stored properties or change the values of stored properties.
 /*
@@ -417,7 +417,7 @@ struct Rectangle {
     // example computed property
     var area: Double {
         get {
-            return width * height //returns a Double
+            return width * height //returns a Double object
         }
         set {
             width = sqrt(newValue)
@@ -426,7 +426,7 @@ struct Rectangle {
     }
 }
 var rect = Rectangle(width: 10, height: 5)
-print(rect.area)  // Calls getter, Output: 50.0
+print(rect.area)  // Calls getter, Output: 50.0. When we call call 'rect.area', we are technically retrieving 'Double(50.0)'.
 rect.area = 64    // Calls setter, sets width and height based on newValue
 print(rect.width)  // Output: 8.0, this is simply accessing the stored property/field, with object.field.
 print(rect.height) // Output: 8.0
@@ -563,12 +563,17 @@ let toyota = Car(e: false, isConvertible: true)
 print(toyota.isConvertible)
 print(toyota.isElectric)
 
-// In both a struct and class, 'Actor()' is an instance. However, for a struct, the instance is a 'value type' and for a class, the instance is a 'reference type'.
+// In both a struct and class, 'Actor()' is an object. However, for a struct, the object is a 'value type' and for a class, the object is a 'reference type'.
+// If an object is from a struct and assigned to a variable, that variable stores it. If an object is from a class and assigned to a variable, that variable points to the object.
 // In a struct, actor1 holds the actual data of the instance Actor() directly (no arrow).
 // So when we do actor2 = actor1, actor2 gets a copy of actor1's Actor().
 // This means that when we change a field's value from actor2, actor1's field isn't affected.
 // Likewise, if we have var x = 30, and var y = x (y is 30 now), then y is assigned a copy of x's value.
 // So later when we do y = 50, x is still equal to 30.
+
+// This is the case for built-in structs like 'Double'. The long-hand version of "var test: Double = 54.0" is "var test = Double(54.0)".
+// So technically, 'test' stores a 'Double' object.
+// Everything is an object, there are no primitive types or literals.
 
 // In a class, actor1 points to the instance Actor().
 // When we do actor2 = actor1, actor2 now points to the same Actor() instance as actor1.
